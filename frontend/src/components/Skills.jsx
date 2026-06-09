@@ -49,7 +49,7 @@ export default function Skills() {
   const ref = useRef(null)
 
   useEffect(() => {
-    fetch('/api/skills')
+    fetch(`${import.meta.env.VITE_API_URL}/api/skills`)
       .then((r) => r.json())
       .then(setSkills)
       .catch(() => setSkills(FALLBACK))
