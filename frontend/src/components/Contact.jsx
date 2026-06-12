@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 const LinkedInIcon = () => (
   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -41,29 +43,54 @@ const CONTACTS = [
 ]
 
 export default function Contact() {
+  const [visible, setVisible] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="contact" className="py-28 px-6 bg-[#0f0f0f]">
+    <section id="contact" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
       <div className="max-w-3xl mx-auto text-center">
-        <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
+        <p
+          className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3"
+          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease both' : 'none' }}
+        >
           04 — Contact
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
+        <h2
+          className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
+          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.06s both' : 'none' }}
+        >
           Get in Touch
         </h2>
-        <p className="text-white/40 mb-14 leading-relaxed max-w-md mx-auto">
+        <p
+          className="text-white/40 mb-14 leading-relaxed max-w-md mx-auto"
+          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.12s both' : 'none' }}
+        >
           Have a project in mind or just want to connect? Reach out through any of the channels below.
         </p>
 
         <div className="grid sm:grid-cols-3 gap-4">
-          {CONTACTS.map((c) => (
+          {CONTACTS.map((c, i) => (
             <a
               key={c.name}
               href={c.href}
               target={c.external ? '_blank' : undefined}
               rel={c.external ? 'noopener noreferrer' : undefined}
-              className="group flex flex-col items-center gap-5 p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05] transition-all duration-300"
+              className="group flex flex-col items-center gap-5 p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-colors duration-300"
+              style={{
+                opacity: visible ? undefined : 0,
+                animation: visible ? `revealUp 0.6s ease ${0.18 + i * 0.1}s both` : 'none',
+              }}
             >
-              <div className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/30 group-hover:bg-white/[0.05] transition-all duration-300">
+              <div className="w-14 h-14 rounded-2xl border border-white/10 group-hover:border-white/30 flex items-center justify-center text-white/50 group-hover:text-white transition-colors duration-300">
                 <c.Icon />
               </div>
               <div>

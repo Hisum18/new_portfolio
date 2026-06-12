@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 const STATS = [
   { label: 'Focus', value: 'Web & Mobile' },
   { label: 'Status', value: 'Open to work' },
@@ -6,13 +8,31 @@ const STATS = [
 ]
 
 export default function About() {
+  const [visible, setVisible] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="about" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="about" className="py-28 px-6" ref={ref}>
+      <div
+        className="max-w-5xl mx-auto"
+        style={{
+          opacity: visible ? undefined : 0,
+          animation: visible ? 'revealUp 0.7s ease both' : 'none',
+        }}
+      >
         <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
           01 — About
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
+        <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
           About Me
         </h2>
 
@@ -21,7 +41,7 @@ export default function About() {
           <div className="md:col-span-3 space-y-5">
             <p className="text-gray-300 leading-relaxed text-lg">
               Hi, I'm{' '}
-              <span className="text-white font-medium">Hisum Shash</span> — an
+              <span className="text-white font-semibold">Hisum Shash</span> — an
               aspiring software engineer passionate about building clean,
               efficient, and user-friendly applications.
             </p>
@@ -41,9 +61,9 @@ export default function About() {
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="p-4 border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/25 hover:bg-white/[0.05] transition-all duration-300"
+                className="p-5 border border-white/[0.08] rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] transition-colors duration-300 group"
               >
-                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest mb-1.5">
+                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest mb-2">
                   {s.label}
                 </p>
                 <p className="text-white font-medium text-sm">{s.value}</p>

@@ -72,7 +72,7 @@ export default function Hero() {
         </p>
 
         <h1
-          className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tight mb-5 leading-none bg-clip-text text-transparent"
+          className="font-heading text-6xl sm:text-7xl md:text-8xl font-black tracking-tight mb-5 leading-none bg-clip-text text-transparent"
           style={{
             backgroundImage: 'linear-gradient(to bottom, #ffffff 0%, #ffffff 40%, #888888 100%)',
           }}

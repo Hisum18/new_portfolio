@@ -46,6 +46,7 @@ function levelLabel(n) {
 export default function Skills() {
   const [skills, setSkills] = useState([])
   const [animated, setAnimated] = useState(false)
+  const [visible, setVisible] = useState(false)
   const ref = useRef(null)
 
   useEffect(() => {
@@ -57,8 +58,13 @@ export default function Skills() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setAnimated(true) },
-      { threshold: 0.15 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          setAnimated(true)
+        }
+      },
+      { threshold: 0.1 }
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
@@ -66,11 +72,17 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
-      <div className="max-w-5xl mx-auto">
+      <div
+        className="max-w-5xl mx-auto"
+        style={{
+          opacity: visible ? undefined : 0,
+          animation: visible ? 'revealUp 0.7s ease both' : 'none',
+        }}
+      >
         <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
           02 — Skills
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
+        <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
           Tech Stack
         </h2>
 
@@ -89,10 +101,13 @@ export default function Skills() {
                         {levelLabel(skill.level)}
                       </span>
                     </div>
-                    <div className="h-[3px] bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-[3px] bg-white/[0.08] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-white/80 to-white rounded-full transition-all duration-[1200ms] ease-out"
-                        style={{ width: animated ? `${skill.level}%` : '0%' }}
+                        className="h-full rounded-full transition-all duration-[1200ms] ease-out"
+                        style={{
+                          width: animated ? `${skill.level}%` : '0%',
+                          background: 'linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,1))',
+                        }}
                       />
                     </div>
                   </div>

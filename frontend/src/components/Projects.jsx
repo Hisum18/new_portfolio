@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const FALLBACK = [
   {
@@ -53,6 +53,8 @@ const LinkIcon = () => (
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
+  const [visible, setVisible] = useState(false)
+  const ref = useRef(null)
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/projects`)
@@ -61,33 +63,64 @@ export default function Projects() {
       .catch(() => setProjects(FALLBACK))
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold: 0.05 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="projects" className="py-28 px-6">
+    <section id="projects" className="py-28 px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
-        <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
+        <p
+          className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3"
+          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease both' : 'none' }}
+        >
           03 — Projects
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
+        <h2
+          className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
+          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.05s both' : 'none' }}
+        >
           What I've Built
         </h2>
 
         <div className="grid sm:grid-cols-2 gap-4">
-          {projects.map((p) => (
+          {projects.map((p, i) => (
             <article
               key={p.id}
-              className="group flex flex-col p-6 border border-white/10 rounded-2xl bg-white/[0.015] hover:border-white/30 hover:bg-white/[0.04] transition-all duration-300"
+              className="group relative flex flex-col p-6 border border-white/10 rounded-2xl bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/20 transition-colors duration-300 overflow-hidden"
+              style={{
+                opacity: visible ? undefined : 0,
+                animation: visible ? `revealUp 0.6s ease ${0.1 + i * 0.1}s both` : 'none',
+              }}
             >
+              {/* Blue top accent line — appears on hover */}
+              <div
+                aria-hidden="true"
+                className="absolute top-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: 'linear-gradient(90deg, transparent, #2563EB, transparent)' }}
+              />
+
               <div className="flex items-start justify-between mb-3">
-                <h3 className="text-base font-semibold text-white/80 group-hover:text-white transition-colors leading-tight pr-4">
-                  {p.title}
-                </h3>
+                <div className="flex items-start gap-3 flex-1 pr-4">
+                  <span className="font-mono text-[11px] text-gray-700 mt-0.5 shrink-0 select-none">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="text-base font-semibold text-white/80 group-hover:text-white transition-colors duration-200 leading-tight">
+                    {p.title}
+                  </h3>
+                </div>
                 <div className="flex gap-3 text-gray-700 shrink-0 mt-0.5">
                   {p.github && (
                     <a
                       href={p.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
+                      className="hover:text-white transition-colors duration-200 cursor-pointer"
                       aria-label="GitHub"
                     >
                       <GithubIcon />
@@ -98,7 +131,7 @@ export default function Projects() {
                       href={p.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
+                      className="hover:text-white transition-colors duration-200 cursor-pointer"
                       aria-label="Live site"
                     >
                       <LinkIcon />
@@ -107,11 +140,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1">
+              <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1 pl-7">
                 {p.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 pl-7">
                 {p.tech.map((t) => (
                   <span
                     key={t}
