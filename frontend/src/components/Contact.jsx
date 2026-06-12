@@ -79,16 +79,18 @@ export default function Contact() {
 
         <div className="grid sm:grid-cols-3 gap-4">
           {CONTACTS.map((c, i) => (
-            <a
+            <div
               key={c.name}
-              href={c.href}
-              target={c.external ? '_blank' : undefined}
-              rel={c.external ? 'noopener noreferrer' : undefined}
-              className="group flex flex-col items-center gap-5 p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-colors duration-300"
               style={{
                 opacity: visible ? undefined : 0,
                 animation: visible ? `revealUp 0.6s ease ${0.18 + i * 0.1}s both` : 'none',
               }}
+            >
+            <a
+              href={c.href}
+              target={c.external ? '_blank' : undefined}
+              rel={c.external ? 'noopener noreferrer' : undefined}
+              className="lift-card group flex flex-col items-center gap-5 p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05]"
             >
               <div className="w-14 h-14 rounded-2xl border border-white/10 group-hover:border-white/30 flex items-center justify-center text-white/50 group-hover:text-white transition-colors duration-300">
                 <c.Icon />
@@ -98,6 +100,7 @@ export default function Contact() {
                 <p className="text-white/40 text-xs mt-1.5 font-mono">{c.description}</p>
               </div>
             </a>
+            </div>
           ))}
         </div>
       </div>

@@ -71,7 +71,7 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
+    <section id="skills" className="py-28 px-6" ref={ref}>
       <div
         className="max-w-5xl mx-auto"
         style={{
@@ -80,7 +80,7 @@ export default function Skills() {
         }}
       >
         <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
-          02 — Skills
+          03 — Skills
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
           Tech Stack

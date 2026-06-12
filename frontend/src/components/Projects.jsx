@@ -79,7 +79,7 @@ export default function Projects() {
           className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3"
           style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease both' : 'none' }}
         >
-          03 — Projects
+          01 — Projects
         </p>
         <h2
           className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
@@ -90,13 +90,15 @@ export default function Projects() {
 
         <div className="grid sm:grid-cols-2 gap-4">
           {projects.map((p, i) => (
-            <article
+            <div
               key={p.id}
-              className="group relative flex flex-col p-6 border border-white/10 rounded-2xl bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/20 transition-colors duration-300 overflow-hidden"
               style={{
                 opacity: visible ? undefined : 0,
                 animation: visible ? `revealUp 0.6s ease ${0.1 + i * 0.1}s both` : 'none',
               }}
+            >
+            <article
+              className="lift-card group relative flex flex-col h-full p-6 border border-white/10 rounded-2xl bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/20 overflow-hidden"
             >
               {/* Blue top accent line — appears on hover */}
               <div
@@ -155,6 +157,7 @@ export default function Projects() {
                 ))}
               </div>
             </article>
+            </div>
           ))}
         </div>
       </div>

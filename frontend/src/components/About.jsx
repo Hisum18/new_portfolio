@@ -21,7 +21,7 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="py-28 px-6" ref={ref}>
+    <section id="about" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
       <div
         className="max-w-5xl mx-auto"
         style={{
@@ -30,7 +30,7 @@ export default function About() {
         }}
       >
         <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
-          01 — About
+          02 — About
         </p>
         <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
           About Me
@@ -61,7 +61,7 @@ export default function About() {
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="p-5 border border-white/[0.08] rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] transition-colors duration-300 group"
+                className="lift-card p-5 border border-white/[0.08] rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] group"
               >
                 <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest mb-2">
                   {s.label}

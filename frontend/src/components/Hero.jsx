@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react'
+
+const ROLE = 'Aspiring Software Engineer  ·  Web & Mobile Developer'
+
 const ICONS = [
   { symbol: '</>', top: '10%',  left:  '5%',  size: 13, opacity: 0.14, delay: '0s',    dur: '4.5s' },
   { symbol: '{ }', top: '20%',  right: '6%',  size: 12, opacity: 0.12, delay: '1.3s',  dur: '5.2s' },
@@ -20,6 +24,22 @@ const ICONS = [
 ]
 
 export default function Hero() {
+  const [typed, setTyped] = useState('')
+
+  useEffect(() => {
+    // Start typing after the heroIn animation finishes
+    const start = setTimeout(() => {
+      let i = 0
+      const tick = setInterval(() => {
+        i++
+        setTyped(ROLE.slice(0, i))
+        if (i >= ROLE.length) clearInterval(tick)
+      }, 38)
+      return () => clearInterval(tick)
+    }, 2700)
+    return () => clearTimeout(start)
+  }, [])
+
   return (
     <section
       id="home"
@@ -43,26 +63,26 @@ export default function Hero() {
           key={i}
           aria-hidden="true"
           style={{
-            position:    'absolute',
-            top:         icon.top,
-            left:        icon.left,
-            right:       icon.right,
-            fontSize:    `${icon.size}px`,
-            opacity:     icon.opacity,
-            color:       '#ffffff',
-            fontFamily:  'monospace',
-            userSelect:  'none',
+            position:      'absolute',
+            top:           icon.top,
+            left:          icon.left,
+            right:         icon.right,
+            fontSize:      `${icon.size}px`,
+            opacity:       icon.opacity,
+            color:         '#ffffff',
+            fontFamily:    'monospace',
+            userSelect:    'none',
             pointerEvents: 'none',
             letterSpacing: '0.04em',
-            whiteSpace:  'nowrap',
-            animation:   `float ${icon.dur} ease-in-out ${icon.delay} infinite`,
+            whiteSpace:    'nowrap',
+            animation:     `float ${icon.dur} ease-in-out ${icon.delay} infinite`,
           }}
         >
           {icon.symbol}
         </span>
       ))}
 
-      {/* Main content — fades in as intro overlay exits */}
+      {/* Main content */}
       <div
         className="relative text-center px-6 max-w-4xl mx-auto"
         style={{ animation: 'heroIn 0.8s ease 1.9s both' }}
@@ -80,23 +100,27 @@ export default function Hero() {
           Hisum Shash
         </h1>
 
-        <p className="text-lg md:text-xl text-white/40 mb-10 font-light max-w-xl mx-auto leading-relaxed">
-          Aspiring Software Engineer &nbsp;·&nbsp; Web &amp; Mobile Developer
+        {/* Typewriter subtitle */}
+        <p className="text-lg md:text-xl text-white/40 mb-10 font-light max-w-xl mx-auto leading-relaxed min-h-[2rem]">
+          {typed}
+          {typed.length > 0 && (
+            <span
+              aria-hidden="true"
+              className="inline-block w-[2px] h-[1.1em] bg-white/40 ml-[2px] align-middle"
+              style={{ animation: 'blink 1s step-end infinite' }}
+            />
+          )}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <button
-            onClick={() =>
-              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
-            }
+            onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-7 py-3 bg-white hover:bg-gray-100 text-black font-semibold rounded-full text-sm transition-all duration-200 hover:scale-105 active:scale-95"
           >
             View Projects
           </button>
           <button
-            onClick={() =>
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-            }
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-7 py-3 border border-white/20 hover:border-white/50 text-white/60 hover:text-white rounded-full text-sm transition-all duration-200 hover:bg-white/5"
           >
             Get in Touch
@@ -106,20 +130,12 @@ export default function Hero() {
 
       {/* Scroll arrow */}
       <button
-        onClick={() =>
-          document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
-        }
+        onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
         aria-label="Scroll to next section"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300 animate-bounce"
-        style={{ animation: 'heroIn 0.6s ease 2.3s both, bounce 1s infinite 3s' }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/50 hover:bg-white/5 transition-all duration-300"
+        style={{ animation: 'heroIn 0.6s ease 2.3s both' }}
       >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
