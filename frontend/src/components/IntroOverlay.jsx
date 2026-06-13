@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export default function IntroOverlay() {
-  const [phase, setPhase] = useState('in') // in | out | done
+  const [phase, setPhase] = useState('in')
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('out'), 1900)
@@ -27,20 +27,29 @@ export default function IntroOverlay() {
         Portfolio
       </p>
 
-      <h1
-        className="text-8xl md:text-9xl font-black text-white"
-        style={{ animation: 'introFadeUp 0.5s ease 0.15s both' }}
-      >
-        HS
-      </h1>
+      {/* Letter split */}
+      <div className="flex items-center">
+        <span
+          className="font-heading text-8xl md:text-9xl font-black text-white"
+          style={{ animation: 'slideFromLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both' }}
+        >
+          H
+        </span>
+        <span
+          className="font-heading text-8xl md:text-9xl font-black text-white"
+          style={{ animation: 'slideFromRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both' }}
+        >
+          S
+        </span>
+      </div>
 
       <div
         className="mt-8 w-24 h-px bg-white/10 overflow-hidden rounded-full"
-        style={{ animation: 'introFadeUp 0.5s ease 0.3s both' }}
+        style={{ animation: 'introFadeUp 0.5s ease 0.5s both' }}
       >
         <div
           className="h-full bg-white/50 rounded-full w-0"
-          style={{ animation: 'introBar 1.1s ease 0.55s forwards' }}
+          style={{ animation: 'introBar 1.1s ease 0.7s forwards' }}
         />
       </div>
     </div>
