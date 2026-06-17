@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 const STATS = [
-  { label: 'Focus', value: 'Web & Mobile' },
+  { label: 'University', value: 'George Mason' },
+  { label: 'Graduation', value: 'Spring 2028' },
   { label: 'Status', value: 'Open to work' },
-  { label: 'Location', value: 'Remote' },
-  { label: 'Role', value: 'Student Dev' },
+  { label: 'Location', value: 'Lorton, VA' },
 ]
 
 export default function About() {
@@ -29,9 +29,6 @@ export default function About() {
           animation: visible ? 'revealUp 0.7s ease both' : 'none',
         }}
       >
-        <p className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3">
-          02 — About
-        </p>
         <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
           About Me
         </h2>
@@ -41,8 +38,8 @@ export default function About() {
           <div className="md:col-span-3 space-y-5">
             <p className="text-gray-300 leading-relaxed text-lg">
               Hi, I'm{' '}
-              <span className="text-white font-semibold">Hisum Shash</span> — an
-              aspiring software engineer passionate about building clean,
+              <span className="text-white font-semibold">Hisum Shash</span> — a
+              software engineer passionate about building clean,
               efficient, and user-friendly applications.
             </p>
             <p className="text-gray-400 leading-relaxed">

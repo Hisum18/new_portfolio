@@ -3,38 +3,34 @@ import { useState, useEffect, useRef } from 'react'
 const FALLBACK = [
   {
     id: 1,
-    title: 'My Portfolio',
-    description:
-      'A full-stack portfolio website built with React and FastAPI, featuring a clean minimalistic dark design.',
-    tech: ['React', 'FastAPI', 'Python', 'Tailwind CSS'],
-    github: 'https://github.com/',
-    live: 'https://my-portfolio-beta-blue-55.vercel.app/',
-  },
-  {
-    id: 2,
-    title: 'Project Two',
-    description:
-      'Update this in backend/data.py — describe what problem it solves and what makes it interesting.',
-    tech: ['JavaScript', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/',
+    title: 'J.A.R.V.I.S — Personal AI Assistant',
+    description: 'Personal AI assistant built with React and FastAPI using Groq\'s LLaMA 3.3 70B. Features real-time token streaming via SSE, persistent memory extraction with SQLite, and full session management.',
+    tech: ['React', 'FastAPI', 'Groq API', 'SQLite', 'SSE'],
+    github: 'https://github.com/Hisum18',
     live: null,
   },
   {
+    id: 2,
+    title: 'Personal Portfolio',
+    description: 'Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with environment-based CORS configuration and a REST API serving dynamic content.',
+    tech: ['React', 'FastAPI', 'Tailwind CSS', 'Vercel', 'Railway'],
+    github: 'https://github.com/Hisum18',
+    live: 'https://new-portfolio-ochre-zeta.vercel.app',
+  },
+  {
     id: 3,
-    title: 'Project Three',
-    description:
-      'Update this in backend/data.py — describe what technologies you used and the biggest challenge you overcame.',
-    tech: ['React Native', 'Expo', 'Firebase'],
-    github: 'https://github.com/',
+    title: 'College Planner / Advisor AI',
+    description: 'AI-powered academic planning tool that generates personalized 4-year degree roadmaps and helps students explore majors and course sequences based on their goals.',
+    tech: ['Python', 'Flask'],
+    github: 'https://github.com/Hisum18',
     live: null,
   },
   {
     id: 4,
-    title: 'Project Four',
-    description:
-      'Update this in backend/data.py — describe what you learned and what you would do differently.',
-    tech: ['Python', 'Flask', 'PostgreSQL'],
-    github: 'https://github.com/',
+    title: 'Grocery Store Simulation',
+    description: 'Simulates grocery store customer flow in Java using priority queues, stacks, and standard queues to model and analyze wait-time behavior under varying store conditions.',
+    tech: ['Java', 'Data Structures'],
+    github: 'https://github.com/Hisum18',
     live: null,
   },
 ]
@@ -75,12 +71,6 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
-        <p
-          className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3"
-          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease both' : 'none' }}
-        >
-          01 — Projects
-        </p>
         <h2
           className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
           style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.05s both' : 'none' }}
@@ -100,12 +90,6 @@ export default function Projects() {
             <article
               className="lift-card group relative flex flex-col h-full p-6 border border-white/10 rounded-2xl bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/20 overflow-hidden"
             >
-              {/* Blue top accent line — appears on hover */}
-              <div
-                aria-hidden="true"
-                className="absolute top-0 left-6 right-6 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: 'linear-gradient(90deg, transparent, #2563EB, transparent)' }}
-              />
 
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-start gap-3 flex-1 pr-4">

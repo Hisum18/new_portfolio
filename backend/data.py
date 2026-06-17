@@ -1,34 +1,34 @@
 PROJECTS = [
     {
         "id": 1,
-        "title": "My Portfolio",
-        "description": "A full-stack portfolio website built with React and FastAPI, featuring a clean minimalistic dark design.",
-        "tech": ["React", "FastAPI", "Python", "Tailwind CSS"],
-        "github": "https://github.com/",
-        "live": "https://my-portfolio-beta-blue-55.vercel.app/",
-    },
-    {
-        "id": 2,
-        "title": "Project Two",
-        "description": "Add a description of your second project here. What problem does it solve? What makes it interesting?",
-        "tech": ["JavaScript", "Node.js", "MongoDB"],
-        "github": "https://github.com/",
+        "title": "J.A.R.V.I.S — Personal AI Assistant",
+        "description": "Personal AI assistant built with React and FastAPI using Groq's LLaMA 3.3 70B. Features real-time token streaming via SSE, persistent memory extraction with SQLite, and full session management.",
+        "tech": ["React", "FastAPI", "Groq API", "SQLite", "SSE"],
+        "github": "https://github.com/Hisum18",
         "live": None,
     },
     {
+        "id": 2,
+        "title": "Personal Portfolio",
+        "description": "Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with environment-based CORS configuration and a REST API serving dynamic content.",
+        "tech": ["React", "FastAPI", "Tailwind CSS", "Vercel", "Railway"],
+        "github": "https://github.com/Hisum18",
+        "live": "https://new-portfolio-ochre-zeta.vercel.app",
+    },
+    {
         "id": 3,
-        "title": "Project Three",
-        "description": "Add a description of your third project here. What technologies did you use and why?",
-        "tech": ["React Native", "Expo", "Firebase"],
-        "github": "https://github.com/",
+        "title": "College Planner / Advisor AI",
+        "description": "AI-powered academic planning tool that generates personalized 4-year degree roadmaps and helps students explore majors and course sequences based on their goals.",
+        "tech": ["Python", "Flask"],
+        "github": "https://github.com/Hisum18",
         "live": None,
     },
     {
         "id": 4,
-        "title": "Project Four",
-        "description": "Add a description of your fourth project here. What was the biggest challenge you overcame?",
-        "tech": ["Python", "Flask", "PostgreSQL"],
-        "github": "https://github.com/",
+        "title": "Grocery Store Simulation",
+        "description": "Simulates grocery store customer flow in Java using priority queues, stacks, and standard queues to model and analyze wait-time behavior under varying store conditions.",
+        "tech": ["Java", "Data Structures"],
+        "github": "https://github.com/Hisum18",
         "live": None,
     },
 ]
@@ -36,35 +36,18 @@ PROJECTS = [
 SKILLS = [
     {
         "category": "Languages",
-        "items": [
-            {"name": "JavaScript", "level": 90},
-            {"name": "Python", "level": 75},
-            {"name": "HTML / CSS", "level": 95},
-            {"name": "TypeScript", "level": 65},
-        ],
+        "items": ["Java", "C", "Python", "JavaScript", "HTML", "CSS", "SQL"],
     },
     {
         "category": "Frontend",
-        "items": [
-            {"name": "React", "level": 85},
-            {"name": "Tailwind CSS", "level": 80},
-            {"name": "React Native", "level": 60},
-        ],
+        "items": ["React", "React Native", "Tailwind CSS", "Expo", "Vite", "TypeScript"],
     },
     {
         "category": "Backend",
-        "items": [
-            {"name": "Node.js", "level": 70},
-            {"name": "FastAPI / Python", "level": 65},
-            {"name": "Express", "level": 65},
-        ],
+        "items": ["FastAPI", "Flask", "Node.js", "Express", "SQLite"],
     },
     {
-        "category": "Tools & Other",
-        "items": [
-            {"name": "Git / GitHub", "level": 85},
-            {"name": "Figma", "level": 55},
-            {"name": "Docker", "level": 45},
-        ],
+        "category": "Tools",
+        "items": ["Git", "GitHub", "VS Code", "Vim", "REST APIs", "SSE", "Figma"],
     },
 ]

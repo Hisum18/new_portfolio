@@ -22,14 +22,14 @@ const CONTACTS = [
   {
     name: 'LinkedIn',
     description: 'Connect with me',
-    href: 'https://linkedin.com/in/',
+    href: 'https://www.linkedin.com/in/hisum-shash-037882346/',
     Icon: LinkedInIcon,
     external: true,
   },
   {
     name: 'GitHub',
-    description: 'See my projects',
-    href: 'https://github.com/',
+    description: 'github.com/Hisum18',
+    href: 'https://github.com/Hisum18',
     Icon: GithubIcon,
     external: true,
   },
@@ -58,12 +58,6 @@ export default function Contact() {
   return (
     <section id="contact" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
       <div className="max-w-3xl mx-auto text-center">
-        <p
-          className="font-mono text-white/40 text-[11px] tracking-[0.3em] uppercase mb-3"
-          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease both' : 'none' }}
-        >
-          04 — Contact
-        </p>
         <h2
           className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
           style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.06s both' : 'none' }}
@@ -95,10 +89,7 @@ export default function Contact() {
               <div className="w-14 h-14 rounded-2xl border border-white/10 group-hover:border-white/30 flex items-center justify-center text-white/50 group-hover:text-white transition-colors duration-300">
                 <c.Icon />
               </div>
-              <div>
-                <p className="text-white font-semibold text-base">{c.name}</p>
-                <p className="text-white/40 text-xs mt-1.5 font-mono">{c.description}</p>
-              </div>
+              <p className="text-white font-semibold text-base">{c.name}</p>
             </a>
             </div>
           ))}

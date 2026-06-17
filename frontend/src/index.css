@@ -37,15 +37,6 @@ body {
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-@keyframes introBar {
-  from { width: 0%;   }
-  to   { width: 100%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px);   }
-  50%       { transform: translateY(-13px); }
-}
 
 @keyframes heroIn {
   from { opacity: 0; transform: translateY(22px); }
