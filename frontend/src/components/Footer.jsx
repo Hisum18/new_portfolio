@@ -5,9 +5,6 @@ export default function Footer() {
         <p className="font-mono text-[11px] text-gray-700">
           © 2026 Hisum Shash. All rights reserved.
         </p>
-        <p className="font-mono text-[11px] text-gray-700">
-          React · FastAPI · Tailwind CSS
-        </p>
       </div>
     </footer>
   )

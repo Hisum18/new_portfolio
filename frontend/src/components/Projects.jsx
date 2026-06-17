@@ -93,9 +93,6 @@ export default function Projects() {
 
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-start gap-3 flex-1 pr-4">
-                  <span className="font-mono text-[11px] text-gray-700 mt-0.5 shrink-0 select-none">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <h3 className="text-base font-semibold text-white/80 group-hover:text-white transition-colors duration-200 leading-tight">
                     {p.title}
                   </h3>
@@ -126,11 +123,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1 pl-7">
+              <p className="text-gray-500 text-sm leading-relaxed mb-5 flex-1">
                 {p.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 pl-7">
+              <div className="flex flex-wrap gap-1.5">
                 {p.tech.map((t) => (
                   <span
                     key={t}
