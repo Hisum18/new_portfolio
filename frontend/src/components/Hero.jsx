@@ -50,7 +50,7 @@ export default function Hero() {
           {typed.length > 0 && (
             <span
               aria-hidden="true"
-              className="inline-block w-[2px] h-[1.1em] bg-white/40 ml-[2px] align-middle"
+              className="inline-block w-[2px] h-[1.1em] bg-amber-200/50 ml-[2px] align-middle"
               style={{ animation: 'blink 1s step-end infinite' }}
             />
           )}
