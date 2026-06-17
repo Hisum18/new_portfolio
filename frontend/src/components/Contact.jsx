@@ -19,27 +19,9 @@ const EmailIcon = () => (
 )
 
 const CONTACTS = [
-  {
-    name: 'LinkedIn',
-    description: 'Connect with me',
-    href: 'https://www.linkedin.com/in/hisum-shash-037882346/',
-    Icon: LinkedInIcon,
-    external: true,
-  },
-  {
-    name: 'GitHub',
-    description: 'github.com/Hisum18',
-    href: 'https://github.com/Hisum18',
-    Icon: GithubIcon,
-    external: true,
-  },
-  {
-    name: 'Email',
-    description: 'hisumshash6@gmail.com',
-    href: 'mailto:hisumshash6@gmail.com',
-    Icon: EmailIcon,
-    external: false,
-  },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/hisum-shash-037882346/', Icon: LinkedInIcon, external: true },
+  { name: 'GitHub',   href: 'https://github.com/Hisum18',                          Icon: GithubIcon,   external: true },
+  { name: 'Email',    href: 'mailto:hisumshash6@gmail.com',                        Icon: EmailIcon,    external: false },
 ]
 
 export default function Contact() {

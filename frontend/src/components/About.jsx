@@ -34,7 +34,6 @@ export default function About() {
         </h2>
 
         <div className="grid md:grid-cols-5 gap-12 items-start">
-          {/* Text */}
           <div className="md:col-span-3 space-y-5">
             <p className="text-gray-300 leading-relaxed text-lg">
               Hi, I'm{' '}
@@ -53,7 +52,6 @@ export default function About() {
             </p>
           </div>
 
-          {/* Stats */}
           <div className="md:col-span-2 grid grid-cols-2 gap-3">
             {STATS.map((s) => (
               <div
