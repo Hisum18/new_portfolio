@@ -41,17 +41,11 @@ export default function Contact() {
     <section id="contact" className="py-28 px-6 bg-[#0f0f0f]" ref={ref}>
       <div className="max-w-3xl mx-auto text-center">
         <h2
-          className="font-heading text-4xl md:text-5xl font-black mb-4 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
+          className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
           style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.06s both' : 'none' }}
         >
           Get in Touch
         </h2>
-        <p
-          className="text-white/40 mb-14 leading-relaxed max-w-md mx-auto"
-          style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.12s both' : 'none' }}
-        >
-          Have a project in mind or just want to connect? Reach out through any of the channels below.
-        </p>
 
         <div className="grid sm:grid-cols-3 gap-4">
           {CONTACTS.map((c, i) => (
