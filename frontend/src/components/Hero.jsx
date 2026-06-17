@@ -30,10 +30,8 @@ export default function Hero() {
         `,
       }}
     >
-      {/* Bottom fade */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none" />
 
-      {/* Main content */}
       <div
         className="relative text-center px-6 max-w-4xl mx-auto"
         style={{ animation: 'heroIn 0.8s ease 1.2s both' }}
@@ -47,7 +45,6 @@ export default function Hero() {
           Hisum Shash
         </h1>
 
-        {/* Typewriter subtitle */}
         <p className="text-lg md:text-xl text-white/40 mb-10 font-light max-w-xl mx-auto leading-relaxed min-h-[2rem]">
           {typed}
           {typed.length > 0 && (
@@ -75,7 +72,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll arrow */}
       <button
         onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
         aria-label="Scroll to next section"

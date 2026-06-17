@@ -51,7 +51,6 @@ export default function Navbar() {
           HS
         </button>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
             <button
@@ -73,7 +72,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile hamburger */}
         <button
           className="md:hidden p-2 flex flex-col gap-[5px] cursor-pointer"
           onClick={() => setMenuOpen((o) => !o)}
@@ -85,7 +83,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-60' : 'max-h-0'}`}>
         <div className="px-6 pb-5 border-t border-white/5 flex flex-col gap-4 pt-4 bg-[#0a0a0a]/95 backdrop-blur-xl">
           {LINKS.map((l) => (
