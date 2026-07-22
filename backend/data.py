@@ -10,7 +10,7 @@ PROJECTS = [
     {
         "id": 2,
         "title": "Personal Portfolio",
-        "description": "Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with environment-based CORS configuration and a REST API serving dynamic content.",
+        "description": "Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with an environment-based API URL and a REST API serving dynamic content.",
         "tech": ["React", "FastAPI", "Tailwind CSS", "Vercel", "Railway"],
         "github": "https://github.com/Hisum18",
         "live": "https://new-portfolio-ochre-zeta.vercel.app",

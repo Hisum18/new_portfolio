@@ -37,3 +37,7 @@ npm run dev
 ```
 
 Frontend runs at `http://localhost:5173` — backend at `http://localhost:8000`.
+
+The frontend reads the API base URL from `VITE_API_URL` (see `frontend/.env`). The
+backend's allowed CORS origins are listed in `backend/main.py`, so a new deployment
+URL needs to be added there.
