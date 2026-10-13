@@ -1,46 +1,47 @@
 import { useState, useEffect, useRef } from 'react'
-import { Bot, Globe, GraduationCap, ShoppingCart, Code2, Github, ExternalLink } from 'lucide-react'
+import { Bot, Globe, Coffee, Target, Code2, Github, ExternalLink } from 'lucide-react'
+import SectionHeading from './SectionHeading'
 
 const FALLBACK = [
   {
     id: 1,
-    title: 'J.A.R.V.I.S — Personal AI Assistant',
-    description: 'Personal AI assistant built with React and FastAPI using Groq\'s LLaMA 3.3 70B. Features real-time token streaming via SSE, persistent memory extraction with SQLite, and full session management.',
-    tech: ['React', 'FastAPI', 'Groq API', 'SQLite', 'SSE'],
-    github: 'https://github.com/Hisum18',
+    title: 'Snipe — Real-Time Job Alerts',
+    description: 'A full-stack SaaS that alerts you within minutes when a company posts a new job, polling applicant-tracking-system endpoints directly — faster than any aggregator. Magic-link auth, Stripe billing, Redis rate limiting, and SSRF-safe fetching.',
+    tech: ['Next.js', 'TypeScript', 'Postgres', 'Drizzle', 'Stripe'],
+    github: 'https://github.com/Hisum18/snipe',
     live: null,
   },
   {
     id: 2,
-    title: 'Personal Portfolio',
-    description: 'Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with an environment-based API URL and a REST API serving dynamic content.',
-    tech: ['React', 'FastAPI', 'Tailwind CSS', 'Vercel', 'Railway'],
-    github: 'https://github.com/Hisum18',
-    live: 'https://new-portfolio-ochre-zeta.vercel.app',
+    title: 'J.A.R.V.I.S — Personal AI Assistant',
+    description: 'Personal AI assistant built with React and FastAPI using Groq\'s LLaMA 3.3 70B. Features real-time token streaming via SSE, persistent memory extraction with SQLite, and full session management.',
+    tech: ['React', 'FastAPI', 'Groq API', 'SQLite', 'SSE'],
+    github: 'https://github.com/Hisum18/nova',
+    live: null,
   },
   {
     id: 3,
-    title: 'College Planner / Advisor AI',
-    description: 'AI-powered academic planning tool that generates personalized 4-year degree roadmaps and helps students explore majors and course sequences based on their goals.',
-    tech: ['Python', 'Flask'],
-    github: 'https://github.com/Hisum18',
-    live: null,
+    title: 'Qahwah Drip — Café Website',
+    description: 'A responsive marketing site for Qahwah Drip, a Yemeni specialty coffee café in Falls Church, VA. Hand-built static site with a custom heritage design system, real café photography, and full SEO — structured data, Open Graph, and sitemaps.',
+    tech: ['HTML', 'CSS', 'JavaScript', 'SEO'],
+    github: 'https://github.com/Hisum18/Qahwah-Drip',
+    live: 'https://qahwahdrip.com',
   },
   {
     id: 4,
-    title: 'Grocery Store Simulation',
-    description: 'Simulates grocery store customer flow in Java using priority queues, stacks, and standard queues to model and analyze wait-time behavior under varying store conditions.',
-    tech: ['Java', 'Data Structures'],
-    github: 'https://github.com/Hisum18',
-    live: null,
+    title: 'Personal Portfolio',
+    description: 'Full-stack portfolio with a React frontend and FastAPI backend. Deployed on Vercel and Railway with an environment-based API URL and a REST API serving dynamic content.',
+    tech: ['React', 'FastAPI', 'Tailwind CSS', 'Vercel', 'Railway'],
+    github: 'https://github.com/Hisum18/new_portfolio',
+    live: 'https://new-portfolio-ochre-zeta.vercel.app',
   },
 ]
 
 const ICONS = {
-  1: Bot,
-  2: Globe,
-  3: GraduationCap,
-  4: ShoppingCart,
+  1: Target,
+  2: Bot,
+  3: Coffee,
+  4: Globe,
 }
 
 export default function Projects() {
@@ -67,12 +68,12 @@ export default function Projects() {
   return (
     <section id="projects" className="py-28 px-6" ref={ref}>
       <div className="max-w-5xl mx-auto">
-        <h2
-          className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
+        <SectionHeading
+          number="01"
+          label="Work"
+          title="What I've Built"
           style={{ opacity: visible ? undefined : 0, animation: visible ? 'revealUp 0.6s ease 0.05s both' : 'none' }}
-        >
-          What I've Built
-        </h2>
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {projects.map((p, i) => {
