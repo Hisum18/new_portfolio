@@ -11,3 +11,6 @@ backend/.env
 
 # OS
 .DS_Store
+
+# Local tooling
+.claude/
