@@ -76,7 +76,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-6 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-heading font-black text-lg text-white tracking-widest hover:text-amber-200/70 transition-colors cursor-pointer"
+          className="font-heading font-black text-lg text-white tracking-widest hover:text-green-400/80 transition-colors cursor-pointer"
         >
           HS
         </button>

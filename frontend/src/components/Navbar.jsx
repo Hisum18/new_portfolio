@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="col-start-1 justify-self-start font-heading font-black text-lg text-white tracking-widest hover:text-amber-200/70 transition-colors cursor-pointer"
+          className="col-start-1 justify-self-start font-heading font-black text-lg text-white tracking-widest hover:text-green-400/80 transition-colors cursor-pointer"
         >
           HS
         </button>
@@ -67,7 +67,7 @@ export default function Navbar() {
               <span
                 className="absolute bottom-1 left-4 right-4 h-px rounded-full transition-opacity duration-300"
                 style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(240,200,100,0.7), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(74,222,128,0.85), transparent)',
                   opacity: active === l.href ? 1 : 0,
                 }}
               />
