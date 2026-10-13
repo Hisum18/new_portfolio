@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import SectionHeading from './SectionHeading'
 
 const FALLBACK = [
   { category: 'Languages', items: ['Java', 'C', 'Python', 'JavaScript', 'HTML', 'CSS', 'SQL'] },
-  { category: 'Frontend',  items: ['React', 'React Native', 'Tailwind CSS', 'Expo', 'Vite', 'TypeScript'] },
-  { category: 'Backend',   items: ['FastAPI', 'Flask', 'Node.js', 'Express', 'SQLite'] },
-  { category: 'Tools',     items: ['Git', 'GitHub', 'VS Code', 'Vim', 'REST APIs', 'SSE', 'Figma'] },
+  { category: 'Frontend',  items: ['React', 'React Native', 'Next.js', 'Tailwind CSS', 'Expo', 'Vite', 'TypeScript'] },
+  { category: 'Backend',   items: ['FastAPI', 'Flask', 'Node.js', 'Express', 'Postgres', 'Drizzle', 'SQLite'] },
+  { category: 'Tools',     items: ['Git', 'GitHub', 'VS Code', 'Vim', 'REST APIs', 'SSE', 'Figma', 'Stripe', 'Redis', 'Vercel'] },
 ]
 
 export default function Skills() {
@@ -37,28 +38,49 @@ export default function Skills() {
           animation: visible ? 'revealUp 0.7s ease both' : 'none',
         }}
       >
-        <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
-          Tech Stack
-        </h2>
+        <SectionHeading number="03" label="Skills" title="Tech Stack" />
 
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-10">
-          {skills.map((cat) => (
-            <div key={cat.category}>
-              <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.25em] mb-4">
-                {cat.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.items.map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1.5 text-sm text-gray-300 bg-white/[0.05] border border-white/[0.08] rounded-lg"
-                  >
-                    {item}
+        <div className="rounded-2xl border border-white/10 bg-[#0b0b0b] overflow-hidden shadow-[0_0_50px_-16px_rgba(74,222,128,0.18)]">
+          <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 bg-white/[0.02]">
+            <span className="w-3 h-3 rounded-full bg-white/15" />
+            <span className="w-3 h-3 rounded-full bg-white/15" />
+            <span className="w-3 h-3 rounded-full bg-green-400/60" />
+            <span className="ml-3 font-mono text-xs text-white/40">hisum@portfolio: ~/skills</span>
+          </div>
+
+          <div className="p-5 md:p-7 font-mono text-sm leading-relaxed">
+            <p className="text-white/40 mb-5">
+              <span className="text-green-400">❯</span> cat techstack
+            </p>
+
+            <div className="space-y-4">
+              {skills.map((cat) => (
+                <div key={cat.category} className="grid grid-cols-1 sm:grid-cols-[6rem_1fr] gap-x-5 gap-y-1">
+                  <span className="text-green-400/70 text-xs uppercase tracking-wider pt-0.5">
+                    {cat.category}
                   </span>
-                ))}
-              </div>
+                  <span className="text-gray-300">
+                    {cat.items.map((item, i) => (
+                      <span key={item}>
+                        <span className="transition-colors duration-200 hover:text-green-400 cursor-default">
+                          {item}
+                        </span>
+                        {i < cat.items.length - 1 && <span className="text-white/20"> · </span>}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
+
+            <p className="text-white/40 mt-6">
+              <span className="text-green-400">❯</span>
+              <span
+                className="inline-block w-2 h-[0.9em] bg-green-400/70 ml-2 align-middle"
+                style={{ animation: 'blink 1s step-end infinite' }}
+              />
+            </p>
+          </div>
         </div>
       </div>
     </section>
