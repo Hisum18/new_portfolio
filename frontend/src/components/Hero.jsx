@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
-import Beams from './Beams'
+import portrait from '../assets/portrait.jpg'
+import ScrambleName from './ScrambleName'
 
-const ROLE = 'Software Engineer  ·  Web & Mobile Developer'
+const ROLE = 'Software Engineer · Web & Mobile Developer'
 
 const Button = ({ variant = 'default', className = '', children, ...props }) => {
   const variants = {
     default: 'bg-white text-black hover:bg-gray-100',
-    outline: 'border border-white/20 bg-white/5 backdrop-blur-xl text-white/80 hover:bg-white/10 hover:border-white/40 hover:text-white',
+    outline: 'border border-white/20 bg-white/5 backdrop-blur-xl text-white/80 hover:bg-white/10 hover:border-green-400/40 hover:text-white',
   }
-
   return (
     <button
-      className={`group relative overflow-hidden rounded-full inline-flex items-center justify-center px-7 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${variants[variant]} ${className}`}
+      className={`group relative overflow-hidden rounded-full inline-flex items-center justify-center px-7 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/40 ${variants[variant]} ${className}`}
       {...props}
     >
       <span className="relative z-10 flex items-center">{children}</span>
@@ -38,77 +38,71 @@ export default function Hero() {
   }, [])
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
-    >
-      <div className="absolute inset-0 z-0">
-        <Beams
-          beamWidth={2.5}
-          beamHeight={18}
-          beamNumber={15}
-          lightColor="#ffffff"
-          speed={2.5}
-          noiseIntensity={2}
-          scale={0.15}
-          rotation={43}
+    <section id="home" className="relative min-h-screen overflow-hidden bg-black flex items-center">
+      {/* Portrait */}
+      <div className="absolute inset-y-0 right-0 w-full md:w-[62%] lg:w-[56%]">
+        <img
+          src={portrait}
+          alt="Hisum Shash"
+          className="w-full h-full object-cover object-[60%_20%]"
         />
+        {/* fade the photo's left edge into black so there's no seam with the text column */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent md:via-black/25 md:to-transparent" />
+        {/* bottom fade for the section transition + mobile legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/40 md:to-transparent" />
+        {/* mobile-only: darken the left where the text sits, so the headline stays legible over the face */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent md:hidden" />
       </div>
 
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/40 via-transparent to-black pointer-events-none" />
+      {/* top scrim so the fixed navbar stays legible over the photo */}
+      <div className="absolute inset-x-0 top-0 h-28 z-[1] bg-gradient-to-b from-black/70 to-transparent pointer-events-none" />
 
-      <div
-        className="absolute inset-0 z-[2] pointer-events-none"
-        style={{
-          backgroundImage:
-            'radial-gradient(ellipse 70% 45% at 50% 45%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, transparent 80%)',
-        }}
-      />
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
+        <div className="max-w-xl">
+          <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.92] tracking-tight text-white">
+            <ScrambleName lines={['Hisum', 'Shash']} lineClassName="block min-h-[0.92em]" startDelay={1500} />
+          </h1>
 
-      <div
-        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
-        style={{ animation: 'heroIn 0.8s ease 1.2s both' }}
-      >
-        <h1
-          className="font-heading text-6xl sm:text-7xl md:text-8xl font-black tracking-tight mb-5 leading-none bg-clip-text text-transparent"
-          style={{
-            backgroundImage: 'linear-gradient(to bottom, #ffffff 0%, #ffffff 40%, #888888 100%)',
-          }}
-        >
-          Hisum Shash
-        </h1>
-
-        <p className="text-lg md:text-xl text-white/50 mb-10 font-light max-w-xl mx-auto leading-relaxed min-h-[2rem]">
-          {typed}
-          {typed.length > 0 && (
-            <span
-              aria-hidden="true"
-              className="inline-block w-[2px] h-[1.1em] bg-amber-200/50 ml-[2px] align-middle"
-              style={{ animation: 'blink 1s step-end infinite' }}
-            />
-          )}
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button
-            onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+          <p
+            className="mt-6 font-mono text-sm md:text-base text-white/55 min-h-[1.5rem]"
+            style={{ animation: 'heroIn 0.6s ease 1.5s both' }}
           >
-            View Projects
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Get in Touch
-          </Button>
+            <span className="text-green-400">&gt;</span> {typed}
+            {typed.length > 0 && (
+              <span
+                aria-hidden="true"
+                className="inline-block w-[0.55em] h-[1.05em] bg-green-400/80 ml-[3px] align-text-bottom"
+                style={{ animation: 'blink 1s step-end infinite' }}
+              />
+            )}
+          </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row gap-3" style={{ animation: 'heroIn 0.6s ease 1.6s both' }}>
+            <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
+              View Work
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Get in Touch
+            </Button>
+          </div>
         </div>
+      </div>
+
+      {/* role tag, bottom-right, terminal-style */}
+      <div className="absolute bottom-8 right-6 z-10 hidden md:block text-right font-mono text-[11px] uppercase tracking-[0.25em] text-white/40 leading-relaxed">
+        <p className="text-green-400/70">George Mason</p>
+        <p>Open to work</p>
       </div>
 
       <button
         onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
         aria-label="Scroll to next section"
-        className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all duration-300"
+        className="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white/50 hover:text-green-400 hover:border-green-400/50 hover:bg-white/10 transition-all duration-300"
         style={{ animation: 'heroIn 0.6s ease 1.6s both' }}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

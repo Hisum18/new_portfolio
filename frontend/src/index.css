@@ -67,6 +67,11 @@ body {
   to   { background-position-x: 100%; }
 }
 
+.scramble-dud {
+  color: #4ade80;
+  opacity: 0.85;
+}
+
 .lift-card {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.35s ease,
