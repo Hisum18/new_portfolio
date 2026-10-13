@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { GraduationCap, Calendar, Briefcase, MapPin } from 'lucide-react'
+import SectionHeading from './SectionHeading'
 
 const STATS = [
-  { label: 'University', value: 'George Mason' },
-  { label: 'Graduation', value: 'Spring 2028' },
-  { label: 'Status', value: 'Open to work' },
-  { label: 'Location', value: 'Lorton, VA' },
+  { label: 'University', value: 'George Mason', Icon: GraduationCap },
+  { label: 'Graduation', value: 'Spring 2028', Icon: Calendar },
+  { label: 'Status', value: 'Open to work', Icon: Briefcase },
+  { label: 'Location', value: 'Lorton, VA', Icon: MapPin },
 ]
 
 export default function About() {
@@ -29,39 +31,42 @@ export default function About() {
           animation: visible ? 'revealUp 0.7s ease both' : 'none',
         }}
       >
-        <h2 className="font-heading text-4xl md:text-5xl font-black mb-14 tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">
-          About Me
-        </h2>
+        <SectionHeading number="02" label="Profile" title="About Me" />
 
         <div className="grid md:grid-cols-5 gap-12 items-start">
-          <div className="md:col-span-3 space-y-5">
-            <p className="text-gray-300 leading-relaxed text-lg">
+          <div className="md:col-span-3 border-l-2 border-green-400/40 pl-6">
+            <p className="text-2xl md:text-3xl font-light text-gray-100 leading-snug tracking-tight mb-8">
               Hi, I'm{' '}
-              <span className="text-white font-semibold">Hisum Shash</span> — a
-              software engineer passionate about building clean,
-              efficient, and user-friendly applications.
+              <span className="font-medium text-white">Hisum Shash</span> — a
+              software engineer building clean, efficient, and user-friendly
+              applications.
             </p>
-            <p className="text-gray-400 leading-relaxed">
-              I specialize in web and mobile development, crafting seamless
-              experiences across all platforms. I love diving into new
-              technologies and turning ideas into real, working products.
-            </p>
-            <p className="text-gray-400 leading-relaxed">
-              Whether it's a sleek frontend, a robust API, or a full-stack
-              product — I enjoy the entire journey from concept to deployment.
-            </p>
+            <div className="space-y-5">
+              <p className="text-gray-400 leading-relaxed">
+                I specialize in web and mobile development, crafting seamless
+                experiences across all platforms. I love diving into new
+                technologies and turning ideas into real, working products.
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                Whether it's a sleek frontend, a robust API, or a full-stack
+                product — I enjoy the entire journey from concept to deployment.
+              </p>
+            </div>
           </div>
 
           <div className="md:col-span-2 grid grid-cols-2 gap-3">
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="lift-card p-5 border border-white/[0.08] rounded-2xl bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] group"
+                className="lift-card p-5 border border-white/[0.08] rounded-2xl bg-white/[0.02] hover:border-green-400/30 hover:bg-white/[0.04] group"
               >
-                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest mb-2">
-                  {s.label}
-                </p>
-                <p className="text-white font-medium text-sm">{s.value}</p>
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    {s.label}
+                  </p>
+                  <s.Icon className="w-4 h-4 text-white/25 group-hover:text-green-400/80 transition-colors duration-300" />
+                </div>
+                <p className="text-white font-medium">{s.value}</p>
               </div>
             ))}
           </div>
