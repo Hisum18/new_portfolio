@@ -9,7 +9,7 @@ PROJECTS = [
     },
     {
         "id": 2,
-        "title": "J.A.R.V.I.S — Personal AI Assistant",
+        "title": "Nova — Personal AI Assistant",
         "description": "Personal AI assistant built with React and FastAPI using Groq's LLaMA 3.3 70B. Features real-time token streaming via SSE, persistent memory extraction with SQLite, and full session management.",
         "tech": ["React", "FastAPI", "Groq API", "SQLite", "SSE"],
         "github": "https://github.com/Hisum18/nova",
