@@ -2,16 +2,24 @@ import { useState, useEffect, useRef } from 'react'
 import { Github, Linkedin, Mail } from 'lucide-react'
 
 const LINKS = [
-  { name: 'Projects', href: '#projects' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
+  { name: 'projects', href: '#projects' },
+  { name: 'about', href: '#about' },
+  { name: 'skills', href: '#skills' },
 ]
 
 const SOCIALS = [
-  { name: 'GitHub', href: 'https://github.com/Hisum18', Icon: Github, external: true },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/hisum-shash-037882346/', Icon: Linkedin, external: true },
-  { name: 'Email', href: 'mailto:hisumshash6@gmail.com', Icon: Mail, external: false },
+  { name: 'github', href: 'https://github.com/Hisum18', Icon: Github, external: true },
+  { name: 'linkedin', href: 'https://www.linkedin.com/in/hisum-shash-037882346/', Icon: Linkedin, external: true },
+  { name: 'email', href: 'mailto:hisumshash6@gmail.com', Icon: Mail, external: false },
 ]
+
+const Brand = () => (
+  <span className="font-mono font-bold text-lg tracking-tight">
+    <span className="text-green-400/60">&lt;</span>
+    <span className="text-white">HS</span>
+    <span className="text-green-400/60">/&gt;</span>
+  </span>
+)
 
 export default function Footer() {
   const [visible, setVisible] = useState(false)
@@ -38,6 +46,10 @@ export default function Footer() {
   return (
     <footer id="contact" ref={ref} className="w-full pt-28 pb-10 overflow-hidden bg-[#0f0f0f]">
       <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+        <p className="font-mono text-xs tracking-[0.25em] text-green-400/70 mb-4" style={reveal(0.02)}>
+          <span className="text-green-400">&#10095;</span> ~/contact
+        </p>
+
         <h2
           className="font-heading text-4xl md:text-5xl font-black tracking-tight bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent"
           style={reveal(0.05)}
@@ -56,9 +68,9 @@ export default function Footer() {
               href={s.href}
               target={s.external ? '_blank' : undefined}
               rel={s.external ? 'noopener noreferrer' : undefined}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-white/70 hover:text-white hover:border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+              className="group inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 font-mono text-sm text-white/70 hover:text-white hover:border-green-400/40 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all duration-300"
             >
-              <s.Icon className="w-[18px] h-[18px]" />
+              <s.Icon className="w-[18px] h-[18px] text-white/45 group-hover:text-green-400 transition-colors duration-300" />
               {s.name}
             </a>
           ))}
@@ -76,22 +88,22 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-6 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-heading font-black text-lg text-white tracking-widest hover:text-green-400/80 transition-colors cursor-pointer"
+          className="cursor-pointer transition-opacity hover:opacity-80"
+          aria-label="Back to top"
         >
-          HS
+          <Brand />
         </button>
 
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-1 font-mono text-[13px]">
           {LINKS.map((l) => (
             <button
               key={l.name}
               onClick={() => scrollTo(l.href)}
-              className="relative px-3 py-1.5 text-sm group cursor-pointer active:scale-95 transition-transform duration-150"
+              className="relative px-3 py-1.5 group cursor-pointer active:scale-95 transition-transform duration-150"
             >
-              <span className="relative z-10 text-white/50 group-hover:text-white transition-colors duration-300">
-                {l.name}
+              <span className="relative z-10 text-white/50 group-hover:text-green-400/90 transition-colors duration-300">
+                <span className="text-green-400/35 group-hover:text-green-400/60">~/</span>{l.name}
               </span>
-              <span className="absolute inset-0 rounded-full bg-white/10 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]" />
             </button>
           ))}
         </nav>
